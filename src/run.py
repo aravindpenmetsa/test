@@ -34,7 +34,7 @@ def dict_to_json(dict):
 def process_files(folder_path):
     for data_file_name in os.listdir(folder_path):
          data = construct_dict(os.path.join(folder_path, data_file_name))
-         send_http_req(dict_to_json(data), "http://localhost/")
+         send_http_req(dict_to_json(data), "http://localhost/fruits")
 
 if __name__ == '__main__':
     process_files('../data/supplier-data/descriptions/')
