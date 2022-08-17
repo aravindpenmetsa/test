@@ -21,7 +21,7 @@ def convert_image_to_JPEG(file_path):
     # TODO: check whether the file is a valid image type, may using imghdr pkg.
     assert os.path.exists(file_path), 'No file in this path'
     image = Image.open(file_path)
-    new_name = change_ext(file_path, ".JPEG")
+    new_name = change_ext(file_path, ".jpeg")
     print("new_name", new_name)
     image.resize((600,400)).convert("RGB").save(new_name)
     return True
