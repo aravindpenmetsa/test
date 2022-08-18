@@ -12,15 +12,15 @@ def generate_email(sender, recipient, subject, body, attachment_path):
     message["Subject"] = subject
     message.set_content(body)
 
-    mime_type, _ = mimetypes.guess_type(attachment_path)
-    mime_type, mime_subtype = mime_type.split("/", 1)
-
-    with open(attachment_path, encoding='unicode_escape') as attachment_file:
-        message.add_attachment(attachment_file.read(),
-                              maintype=mime_type,
-                              subtype=mime_subtype,
-                              filename=os.path.basename(attachment_path)
-                              )
+    if attachment_path != None:
+        mime_type, _ = mimetypes.guess_type(attachment_path)
+        mime_type, mime_subtype = mime_type.split("/", 1)
+        with open(attachment_path, mode="rb") as attachment_file:
+            message.add_attachment(attachment_file.read(),
+                                maintype=mime_type,
+                                subtype=mime_subtype,
+                                filename=os.path.basename(attachment_path)
+                                )
     return message
 
 def send_email(message):

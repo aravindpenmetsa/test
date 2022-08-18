@@ -38,4 +38,4 @@ if __name__ == "__main__":
     receiver = "{}@example.com".format(os.environ.get('USER'))
     subject = "Upload Completed - Online Fruit Store"
     message = emails.generate_email(sender, receiver, subject, summary_text, pdf_report_path)
-    emails.send(message)
+    emails.send_email(message)
